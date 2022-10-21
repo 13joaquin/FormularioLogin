@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formulariologin/screens/screens.dart';
+import 'package:formulariologin/screens/producto_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'login' : (__) => LoginScreen(),
         'home': (__) => HomeScreen(),
+        'produc': (__) => ProductoScreen(),
       },
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey[300]),
     );

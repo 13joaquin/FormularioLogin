@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:formulariologin/providers/login_from_provider.dart';
 import 'package:formulariologin/widgets/auth_background.dart';
@@ -50,17 +52,50 @@ class _LoginForm extends StatelessWidget {
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
-                  hintText: "Ingresa correo electroinco u Email",
+                  hintText: "juaquinRa@gmail.com",
                   labelText: "Email",
-                  prefixIcon: Icons.alternate_email_sharp)),
+                  prefixIcon: Icons.add_photo_alternate_sharp),
+              onChanged: (value) => loginForm.email = value,
+              validator: (value) {
+                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regex = new RegExp(pattern);
+                return regex.hasMatch(value ?? '')? null : 'El valor no es email valido';
+              }),
+          SizedBox(height: 30),
           TextFormField(
               obscureText: true,
               autocorrect: false,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
-                  hintText: "Ingresa la contraseña",
-                  labelText: "Password",
-                  prefixIcon: Icons.password_outlined))
+                  hintText: "********",
+                  labelText: "Contraseña",
+                  prefixIcon: Icons.password_outlined),
+              onChanged: (value) => loginForm.password = value,
+              validator: (value){
+                return (value != null && value.length >= 6)? null : 'La contraseña debe tener al menor 6 caracters';
+              },),
+          SizedBox(height: 30),
+          MaterialButton(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            disabledColor: Colors.grey,
+            elevation: 0,
+            color: Colors.deepPurple,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+              child: Text(
+                loginForm.isLoding ? 'Espere': 'Ingresar',
+                style: TextStyle(color: Colors.white),
+              )
+            ),
+            onPressed: loginForm.isLoding ? null : () async{
+              FocusScope.of(context).unfocus();
+              if(!loginForm.isValidForm()) return;
+              loginForm.isLoding = true;
+              await Future.delayed(Duration(seconds: 2));
+              loginForm.isLoding = false;
+              Navigator.pushReplacementNamed(context, "home");
+            },
+          )
         ]),
       ),
     );
