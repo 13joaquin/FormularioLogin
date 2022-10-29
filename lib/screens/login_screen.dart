@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:formulariologin/providers/login_from_provider.dart';
 import 'package:formulariologin/widgets/auth_background.dart';
+import 'package:formulariologin/screens/screens.dart';
 import 'package:formulariologin/widgets/card_container.dart';
 import 'package:formulariologin/ui/input_decorations.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +31,8 @@ class LoginScreen extends StatelessWidget {
             Text(
               'Crear una cuenta nueva',
               style: TextStyle(fontSize: 45),
-            )
-          ]),
+            ),
+            ]),
         ),
       ),
     );
@@ -57,7 +58,7 @@ class _LoginForm extends StatelessWidget {
                   prefixIcon: Icons.add_photo_alternate_sharp),
               onChanged: (value) => loginForm.email = value,
               validator: (value) {
-                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                String pattern =  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                 RegExp regex = new RegExp(pattern);
                 return regex.hasMatch(value ?? '')? null : 'El valor no es email valido';
               }),
@@ -99,5 +100,6 @@ class _LoginForm extends StatelessWidget {
         ]),
       ),
     );
+
   }
 }
