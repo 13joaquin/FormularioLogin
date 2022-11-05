@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             children: [
               _BacagroudImage(productos.picture),
-              _ProductDetails(title: productos.name,subtitle: productos.id),
+              _ProductDetails(title: productos.name,subtitle: productos.id!),
               Positioned(top: 0, right: 0, child: _PriceTag(productos.price)),
               if(!productos.available)
                 Positioned(top: 0,right: 0, child: _NotAvailable())

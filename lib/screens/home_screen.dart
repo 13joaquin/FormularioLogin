@@ -67,6 +67,13 @@ class _Mennu extends StatelessWidget{
                   height: 100,
                   child: Center(child: Text("Cerrar Session", textAlign: TextAlign.center,style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.w900),),),
                 ),),)
+              ],
+              ),
+              Column(children: <Widget>[
+                Padding(padding: EdgeInsets.all(10.0),
+                child: MaterialButton(color: Colors.grey,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                onPressed: (){Navigator.pushNamed((context), "prex");},
+                child: SizedBox(width: 100,height: 100,child: Center(child: Text("PreExamen", textAlign: TextAlign.center,style: TextStyle(color: Colors.indigo, fontWeight: FontWeight.w900),),),),),)
               ],)
             ],
           )
