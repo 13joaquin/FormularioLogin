@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:formulariologin/models/models.dart';
 import 'package:formulariologin/widgets/auth_background.dart';
-import 'package:firebase_database/firebase_database.dart';
-FirebaseDatabase database = FirebaseDatabase.instance;
-class PreExamen extends StatelessWidget {
+class PreExamen2 extends StatelessWidget {
 
-  const PreExamen({Key? key}) :super(key: key);
+  const PreExamen2({Key? key}) :super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,8 @@ class PreExamen extends StatelessWidget {
   }
 }
 class ProductCard extends StatelessWidget {
-  final FirebaseDatabase database;
-  const ProductCard({Key? key, required this.database}):super(key: key);
+  final Productos productos;
+  const ProductCard({Key? key, required this.productos}):super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,10 +35,10 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
-            _BacagroudImage(database.databaseURL),
-            _ProductDetails(title: database.pluginConstants.toString(),subtitle: database.pluginConstants.toString()),
-            Positioned(top: 0, right: 0, child: _PriceTag()),
-            if(database.app)
+            _BacagroudImage('gs://tiendaangular-e50b2.appspot.com/'),
+            _ProductDetails(title: "Marca HP",subtitle: "Computadoras"),
+            Positioned(top: 0, right: 0, child: _PriceTag(10)),
+            if(!true)
               Positioned(top: 0,right: 0, child: _NotAvailable())
           ],
         ),
@@ -153,4 +151,37 @@ class _NotAvailable extends StatelessWidget {
       )),
     );
   }
+}
+/* Otro codidigo */
+class Other extends StatelessWidget {
+   Other({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: CustomScrollView(
+        slivers: <Widget>[SliverAppBar(title: Text('Cereal'),
+        backgroundColor: Colors.green, expandedHeight: 350.0,
+        ),
+        SliverList(delegate: SliverChildDelegate([
+          daysOutCard(),
+          Container(height: 200)
+        ]))],
+      ),),
+    );
+  }
+}
+Widget daysOutCard() {
+  return Card(
+    color: Colors.amberAccent,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text("Texto", style: TextStyle(fontSize: 75)),
+          Text("days until your trip", style: TextStyle(fontSize: 25))
+        ],
+      ),
+    ),
+  );
 }
