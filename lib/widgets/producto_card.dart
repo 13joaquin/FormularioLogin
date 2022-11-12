@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formulariologin/models/models.dart';
+import 'package:formulariologin/ui/input_Decobotton.dart';
 class ProductCard extends StatelessWidget {
   final Productos productos;
   const ProductCard({Key? key, required this.productos}):super(key: key);
@@ -18,6 +19,9 @@ class ProductCard extends StatelessWidget {
               _BacagroudImage(productos.picture),
               _ProductDetails(title: productos.name,subtitle: productos.id!),
               Positioned(top: 0, right: 0, child: _PriceTag(productos.price)),
+              Container(child: AgregarPorducto()),
+              Container(child: ActualizarProducto()),
+              Container(child: BorrarProducto()),
               if(!productos.available)
                 Positioned(top: 0,right: 0, child: _NotAvailable())
             ],

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:formulariologin/models/models.dart';
 import 'package:formulariologin/widgets/auth_background.dart';
 class PreExamen2 extends StatelessWidget {
@@ -184,4 +184,6 @@ Widget daysOutCard() {
       ),
     ),
   );
-}
+
+
+ */
