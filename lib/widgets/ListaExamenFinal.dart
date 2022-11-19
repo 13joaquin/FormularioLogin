@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:formulariologin/providers/product_from_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:formulariologin/models/product.dart';
@@ -18,4 +18,4 @@ class ListaProductosC extends StatelessWidget{
           itemCount: productos.length,),
     );
   }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:formulariologin/models/models.dart';
@@ -8,7 +9,7 @@ import 'package:formulariologin/widgets/card_container.dart';
 import 'package:provider/provider.dart';
 import 'package:formulariologin/providers/product_from_provider.dart';
 import 'package:formulariologin/widgets/producto_card.dart';
-
+*//*
 class FormularioProducto extends StatelessWidget{
   const FormularioProducto({Key? key}):super(key: key);
   @override
@@ -70,3 +71,4 @@ class _FormularioProducto extends StatelessWidget{
     );
   }
 }
+*/
