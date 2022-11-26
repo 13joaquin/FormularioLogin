@@ -7,6 +7,7 @@ import 'package:formulariologin/screens/card_screens.dart';
 import 'package:provider/provider.dart';
 import 'package:formulariologin/providers/product_from_provider.dart';
 import 'package:formulariologin/models/product.dart';
+import 'package:formulariologin/ui/Proy_Infinite.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/produc': (__) => ProductosScreen(),
         /*'Examen' : (__) => FormularioProducto(),*/
         /*'prex': (__) => PreExamen(),*/
+        '/IS':(__) =>Infinity(),
       },
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey[300]),
     );
