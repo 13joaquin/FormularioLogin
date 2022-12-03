@@ -18,10 +18,26 @@ class ProductosScreen extends StatelessWidget {
            CardContainer(child: Column(children: [
              SizedBox(height: 30),
              ChangeNotifierProvider(create: (__) => ProductFromProvider(),
-             child: _ProductosForms(),)
-           ],))
+             child: _ProductosForms(),
+             ),
+             SizedBox(height: 40),
+           ],),)
          ],),
        ),
+     ),
+     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+     floatingActionButton: FloatingActionButton(
+       onPressed: (){},
+       child: Icon(Icons.add),
+       backgroundColor: Colors.black87,
+       foregroundColor: Colors.yellow,
+       mini: true,
+     ),
+     bottomNavigationBar:  BottomAppBar(
+       notchMargin: 5.0,
+       shape: CircularNotchedRectangle(),
+       color: Colors.black87,
+       child: Menu(),
      ),
    );
   }
@@ -61,6 +77,37 @@ class _ProductosForms extends StatelessWidget{
           MaterialButton(onPressed: () {Navigator.pushReplacementNamed(context, "routeName");})
         ],),
       ),
+    );
+  }
+}
+class Menu extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Padding(padding: EdgeInsets.only(left: 10.0),
+        child: Column(mainAxisSize: MainAxisSize.min,children: [
+          Icon(Icons.home, color: Colors.white,),
+          Text("Home", style: TextStyle(color: Colors.white),)
+        ],),),
+        Padding(padding: EdgeInsets.only(left: 10.0),
+        child: Column(mainAxisSize: MainAxisSize.min,children: [
+          Icon(Icons.shop, color: Colors.white,),
+          Text("Shop", style: TextStyle(color: Colors.white),)
+        ],),),
+        Padding(padding: EdgeInsets.only(left: 10.0),
+        child: Column(mainAxisSize: MainAxisSize.min,children: [
+          Icon(Icons.favorite, color: Colors.white,),
+          Text("Fav", style: TextStyle(color: Colors.white),)
+        ],),),
+        Padding(padding: EdgeInsets.only(left: 10.0),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Icon(Icons.settings, color: Colors.white,),
+            Text("Config", style: TextStyle(color: Colors.white),)
+          ],),)
+      ],
     );
   }
 }

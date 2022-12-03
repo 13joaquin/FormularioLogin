@@ -87,10 +87,25 @@ class _Mennu extends StatelessWidget{
                     child: MaterialButton(color: Colors.grey,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       onPressed: (){Navigator.pushNamed((context), "/IS");},
                       child: SizedBox(width: 100,height: 100,child: Center(child: Text("Infinity Scroll", textAlign: TextAlign.center,style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.w900),),),),))
-              ],)
+              ],),
+
             ],
           )
         ],
+      ),
+    );
+  }
+}
+class MiPaguina extends StatelessWidget {
+  const MiPaguina({Key? key}): super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          print('object');
+        },
       ),
     );
   }
