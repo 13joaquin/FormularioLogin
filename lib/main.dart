@@ -7,7 +7,7 @@ import 'package:formulariologin/screens/card_screens.dart';
 import 'package:provider/provider.dart';
 import 'package:formulariologin/providers/product_from_provider.dart';
 import 'package:formulariologin/models/product.dart';
-import 'package:formulariologin/ui/Proy_Infinite.dart';
+import 'package:formulariologin/widgets/Proy_Infinite.dart';
 
 void main() {
   runApp(const MyApp());

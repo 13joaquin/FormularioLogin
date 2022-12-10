@@ -1,10 +1,11 @@
-
+/*
 import 'package:flutter/material.dart';
 import 'package:formulariologin/main.dart';
 import 'package:motion_tab_bar/MotionTabBarView.dart';
 import 'package:motion_tab_bar/MotionTabController.dart';
 import 'package:motion_tab_bar/motiontabbar.dart';
-
+*/
+/*
 void main() => runApp(Tab());
 
 class Tab extends StatelessWidget {
@@ -67,3 +68,4 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
     ));
   }
 }
+*/
