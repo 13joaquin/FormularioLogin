@@ -2,40 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:formulariologin/Examen Final/dbo.dart';
 
-class EditStudent extends StatefulWidget{
-
-  int rollno;
-  EditStudent({required this.rollno}); //constructor for class
-
+class AddStudent extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return _EditStudent();
+    return _AddStudent();
   }
 }
 
-class _EditStudent extends State<EditStudent>{
+class _AddStudent extends State<AddStudent>{
 
   TextEditingController name = TextEditingController();
   TextEditingController rollno = TextEditingController();
   TextEditingController address = TextEditingController();
+  //test editing controllers for form
 
-  DB mydb = new DB();
+  DB mydb = new DB(); //mydb new object from db.dart
 
   @override
   void initState() {
-    mydb.open();
-
-    Future.delayed(Duration(milliseconds: 500), () async {
-      var data = await mydb.getStudent(widget.rollno); //widget.rollno is passed paramater to this class
-      if(data != null){
-        name.text = data["name"];
-        rollno.text = data["roll_no"].toString();
-        address.text = data["address"];
-        setState(() {});
-      }else{
-        print("No any data with roll no: " + widget.rollno.toString());
-      }
-    });
+    mydb.open(); //initilization database
     super.initState();
   }
 
@@ -44,7 +29,7 @@ class _EditStudent extends State<EditStudent>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Edit Student"),
+          title: Text("Add Student"),
         ),
         body:Container(
           padding: EdgeInsets.all(30),
@@ -71,15 +56,21 @@ class _EditStudent extends State<EditStudent>{
             ),
 
             ElevatedButton(onPressed: (){
-              mydb.db.rawInsert("UPDATE students SET name = ?, roll_no = ?, address = ? WHERE roll_no = ?",
-                  [name.text, rollno.text, address.text, widget.rollno]);
-              //update table with roll no.
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Student Data Updated")));
 
-            }, child: Text("Update Student Data")),
+              mydb.db.rawInsert("INSERT INTO students (name, roll_no, address) VALUES (?, ?, ?);",
+                  [name.text, rollno.text, address.text]); //add student from form to database
+
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("New Student Added")));
+              //show snackbar message after adding student
+
+              name.text = "";
+              rollno.text = "";
+              address.text = "";
+              //clear form to empty after adding data
+
+            }, child: Text("Save Student Data")),
           ],),
         )
     );
   }
-
 }
