@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:formulariologin/providers/product_from_provider.dart';
 import 'package:formulariologin/models/product.dart';
 import 'package:formulariologin/widgets/Proy_Infinite.dart';
+import 'package:formulariologin/Examen Final/MyEx.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         /*'Examen' : (__) => FormularioProducto(),*/
         /*'prex': (__) => PreExamen(),*/
         '/IS':(__) =>Infinity(),
+        'My': (__) => MyEx(),
       },
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey[300]),
     );

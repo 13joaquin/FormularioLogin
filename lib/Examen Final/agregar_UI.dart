@@ -11,9 +11,10 @@ class AddStudent extends StatefulWidget{
 
 class _AddStudent extends State<AddStudent>{
 
+  TextEditingController id = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController rollno = TextEditingController();
-  TextEditingController address = TextEditingController();
+  TextEditingController price = TextEditingController();
   //test editing controllers for form
 
   DB mydb = new DB(); //mydb new object from db.dart
@@ -29,15 +30,21 @@ class _AddStudent extends State<AddStudent>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Student"),
+          title: Text("Add Producto"),
         ),
         body:Container(
           padding: EdgeInsets.all(30),
           child: Column(children: [
+            TextFormField(
+              controller: id,
+              decoration: InputDecoration(
+                hintText: "Id Producto",
+              ),
+            ),
             TextField(
               controller: name,
               decoration: InputDecoration(
-                hintText: "Stuent Name",
+                hintText: "Name Producto",
               ),
             ),
 
@@ -49,26 +56,27 @@ class _AddStudent extends State<AddStudent>{
             ),
 
             TextField(
-              controller: address,
+              controller: price,
               decoration: InputDecoration(
-                hintText: "Address:",
+                hintText: "Precio Producto",
               ),
             ),
 
             ElevatedButton(onPressed: (){
 
-              mydb.db.rawInsert("INSERT INTO students (name, roll_no, address) VALUES (?, ?, ?);",
-                  [name.text, rollno.text, address.text]); //add student from form to database
+              mydb.db?.rawInsert("INSERT INTO product (id, name, roll_no, price) VALUES (?, ?, ?,?);",
+                  [id.text, name.text, rollno.text, price.text]
+              ); //add student from form to database
 
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("New Student Added")));
-              //show snackbar message after adding student
 
+              id.text = "";
               name.text = "";
               rollno.text = "";
-              address.text = "";
+              price.text = "";
               //clear form to empty after adding data
 
-            }, child: Text("Save Student Data")),
+            }, child: Text("Save Products Data")),
           ],),
         )
     );

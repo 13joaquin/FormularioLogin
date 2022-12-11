@@ -90,12 +90,12 @@ class Menu extends StatelessWidget{
         Padding(padding: EdgeInsets.only(left: 10.0),
         child: Column(mainAxisSize: MainAxisSize.min,children: [
           Icon(Icons.home, color: Colors.white,),
-          Text("Home", style: TextStyle(color: Colors.white),)
+          Text("Home", style: TextStyle(color: Colors.white),),
         ],),),
         Padding(padding: EdgeInsets.only(left: 10.0),
         child: Column(mainAxisSize: MainAxisSize.min,children: [
           Icon(Icons.shop, color: Colors.white,),
-          Text("Shop", style: TextStyle(color: Colors.white),)
+          Text("Shop", style: TextStyle(color: Colors.white),),
         ],),),
         Padding(padding: EdgeInsets.only(left: 10.0),
         child: Column(mainAxisSize: MainAxisSize.min,children: [

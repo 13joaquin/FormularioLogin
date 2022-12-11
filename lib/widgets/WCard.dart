@@ -1,4 +1,4 @@
-/* import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:formulariologin/models/models.dart';
 import 'package:formulariologin/widgets/auth_background.dart';
 class PreExamen2 extends StatelessWidget {
@@ -72,10 +72,26 @@ class _BacagroudImage extends StatelessWidget{
     );
   }
 }
+
 class _ProductDetails extends StatelessWidget {
   final String title;
   final String subtitle;
   const _ProductDetails({required this.title, required this.subtitle});
+  final bool isButtonActive = true;
+  final late TextEditingController controller;
+  @override
+  void initState(){
+    super.initState();
+    controller = TextEditingController();
+    controller.addListener(() {
+      final isButtonActive = controller.text.isNotEmpty;
+    })
+  }
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -97,7 +113,13 @@ class _ProductDetails extends StatelessWidget {
             Text(
                 subtitle,
                 style: TextStyle(fontSize: 15,color: Colors.white)
-            )
+            ),
+            ElevatedButton( style: ElevatedButton.styleFrom(onSurface: Colors.blue),
+                onPressed: isButtonActive?(){setState(() => isButtonActive = false);}:
+                null, child: Text('Boton')),
+            ElevatedButton(style: ElevatedButton.styleFrom(onSurface: Colors.blue
+                onPressed: isButtonActive?(){setState(() => isButtonActive = true);}:
+                null, child: Text("Bototn 2"))
           ],
         ),
       ),
@@ -152,6 +174,7 @@ class _NotAvailable extends StatelessWidget {
     );
   }
 }
+/*
 /* Otro codidigo */
 class Other extends StatelessWidget {
    Other({Key? key}) : super(key: key);
@@ -184,6 +207,5 @@ Widget daysOutCard() {
       ),
     ),
   );
-
-
- */
+}
+*/

@@ -26,7 +26,7 @@ class _ListStudents extends State<ListStudents>{
   getdata(){
     Future.delayed(Duration(milliseconds: 500),() async {
       //use delay min 500 ms, because database takes time to initilize.
-      slist = await mydb.db.rawQuery('SELECT * FROM students');
+      slist = await mydb.db!.rawQuery('SELECT * FROM students');
 
       setState(() { }); //refresh UI after getting data from table.
     });
@@ -36,18 +36,18 @@ class _ListStudents extends State<ListStudents>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("List of Students"),
+        title: Text("List of Product"),
       ),
       body: SingleChildScrollView(
         child: Container(
-          child: slist.length == 0?Text("No any students to show."): //show message if there is no any student
+          child: slist.length == 0?Text("No any product to show."): //show message if there is no any student
           Column(  //or populate list to Column children if there is student data.
             children: slist.map((stuone){
               return Card(
                 child: ListTile(
                   leading: Icon(Icons.people),
                   title: Text(stuone["name"]),
-                  subtitle: Text("Roll No:" + stuone["roll_no"].toString() + ", Add: " + stuone["address"]),
+                  subtitle: Text("Roll No:" + stuone["roll_no"].toString() + ", Add: " + stuone["price"]),
                   trailing: Wrap(children: [
 
                     IconButton(onPressed: (){
@@ -58,10 +58,10 @@ class _ListStudents extends State<ListStudents>{
 
 
                     IconButton(onPressed: () async {
-                      await mydb.db.rawDelete("DELETE FROM students WHERE roll_no = ?", [stuone["roll_no"]]);
+                      await mydb.db?.rawDelete("DELETE FROM produt WHERE roll_no = ?", [stuone["roll_no"]]);
                       //delete student data with roll no.
                       print("Data Deleted");
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Student Data Deleted")));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Products Data Deleted")));
                       getdata();
                     }, icon: Icon(Icons.delete, color:Colors.red))
 

@@ -1,7 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 class DB {
-  late Database db;
+  Database? db;
+
   Future open() async {
     var databasesPath = await getDatabasesPath();
     String path = join(databasesPath, 'demo.db');
@@ -10,13 +11,12 @@ class DB {
     Database db = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
           await db.execute('''
-
-                  CREATE TABLE IF NOT EXISTS product( 
+                  CREATE TABLE product( 
                         id primary key,
                         name varchar(255) not null,
-                        available int not null,
-                        price double not null, 
-                        available boolen not null
+                        roll_no int not null,
+                        price varchar(255) not null, 
+                        
                     );
 
                     //create more table here
@@ -27,8 +27,8 @@ class DB {
         });
   }
   Future<Map<dynamic, dynamic>?> getStudent(int rollno) async {
-    List<Map> maps = await db.query('product',
-        where: 'available = ?',
+    List<Map> maps = await db!.query('product',
+        where: 'roll_no = ?',
         whereArgs: [rollno]);
     //getting student data with roll no.
     if (maps.length > 0) {

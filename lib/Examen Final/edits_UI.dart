@@ -71,7 +71,7 @@ class _EditStudent extends State<EditStudent>{
             ),
 
             ElevatedButton(onPressed: (){
-              mydb.db.rawInsert("UPDATE students SET name = ?, roll_no = ?, address = ? WHERE roll_no = ?",
+              mydb.db?.rawInsert("UPDATE students SET name = ?, roll_no = ?, address = ? WHERE roll_no = ?",
                   [name.text, rollno.text, address.text, widget.rollno]);
               //update table with roll no.
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Student Data Updated")));
